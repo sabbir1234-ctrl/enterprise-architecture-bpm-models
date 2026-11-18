@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="City Library Business Architecture" id="id-2b0c639b388044d09709ceaaadbcf40f" version="5.0.0">
+  <folder name="Strategy" id="id-11ef70cadc7843178eb7ce1bcda1bbd8" type="strategy"/>
+  <folder name="Business" id="id-86f43a985e6a448393270a183e2c6d67" type="business">
+    <element xsi:type="archimate:BusinessActor" name="City Library" id="id-4adfd5a7ca544ff29cde646a61701fef">
+      <documentation>The organizational unit that operates the public library and employs its staff.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessActor" name="Anna" id="id-0286ec88811f48fba9c921155f60fb42">
+      <documentation>An employee of the City Library who works on the reference desk.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessActor" name="Mark" id="id-aefaf8d0957b4e38989585321bfd6382">
+      <documentation>An employee of the City Library who supports the digital catalogue and e-resources.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessRole" name="Reference Librarian" id="id-023c1109d853411393758032d1434986">
+      <documentation>Responsible for helping patrons find information and use library resources.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessCollaboration" name="Digital Services Team" id="id-92e549dbe73f4e66aa32bc703cf707e2">
+      <documentation>A collaboration formed to jointly deliver online reference and digital-resource support to patrons.</documentation>
+    </element>
+  </folder>
+  <folder name="Application" id="id-1f4fe775aed74cc0ab5971f9bf41413f" type="application"/>
+  <folder name="Technology" id="id-a2b6f3e00b434caba8823d1108d34e88" type="technology"/>
+  <folder name="Motivation" id="id-69f2d5ed10954e92ba4ad71897c43e19" type="motivation"/>
+  <folder name="Implementation" id="id-d8c1072c69f843e192c12db5330d6238" type="implementation_migration"/>
+  <folder name="Other" id="id-fa4cad9531b74290b93491779d8121b0" type="other"/>
+  <folder name="Relations" id="id-fb4326d462954abe9b83f04e26efb3e3" type="relations">
+    <element xsi:type="archimate:CompositionRelationship" id="id-276e8b63b40944c08814c9d28301a943" source="id-4adfd5a7ca544ff29cde646a61701fef" target="id-0286ec88811f48fba9c921155f60fb42"/>
+    <element xsi:type="archimate:CompositionRelationship" id="id-62804d2dd351457faaff5684bbe86373" source="id-4adfd5a7ca544ff29cde646a61701fef" target="id-aefaf8d0957b4e38989585321bfd6382"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="id-7a069d0bcb5e4673ab8c80c4428ca1b1" source="id-0286ec88811f48fba9c921155f60fb42" target="id-023c1109d853411393758032d1434986"/>
+    <element xsi:type="archimate:AggregationRelationship" id="id-d6c2d3e7e52047ddb46fcff12f282016" source="id-92e549dbe73f4e66aa32bc703cf707e2" target="id-023c1109d853411393758032d1434986"/>
+    <element xsi:type="archimate:AggregationRelationship" id="id-4e9a7692257440b5a6f0eff8aa81ae72" source="id-92e549dbe73f4e66aa32bc703cf707e2" target="id-aefaf8d0957b4e38989585321bfd6382"/>
+  </folder>
+  <folder name="Views" id="id-d61a30977f1a426f883d7c88c399021a" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Business Architecture View" id="id-d00827b02f244377a13ae1e323b89690">
+      <child xsi:type="archimate:DiagramObject" id="id-e839ac9a91634c3bb781235aafea9335" font="1|Segoe UI|9.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" archimateElement="id-4adfd5a7ca544ff29cde646a61701fef">
+        <bounds x="340" y="20" width="180" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-2e3b677f385f46acb5bace09ee5a8592" font="1|Segoe UI|9|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" source="id-e839ac9a91634c3bb781235aafea9335" target="id-61e5aace28444778a9c6d12b20203e54" archimateRelationship="id-276e8b63b40944c08814c9d28301a943">
+          <feature name="nameVisible" value="true"/>
+        </sourceConnection>
+        <sourceConnection xsi:type="archimate:Connection" id="id-6377e2dcf4fb4e81b25970ba7c2141d7" font="1|Segoe UI|9|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" source="id-e839ac9a91634c3bb781235aafea9335" target="id-ab7a41ead7104f219a82f6a606a0c6a8" archimateRelationship="id-62804d2dd351457faaff5684bbe86373">
+          <feature name="nameVisible" value="true"/>
+        </sourceConnection>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-61e5aace28444778a9c6d12b20203e54" targetConnections="id-2e3b677f385f46acb5bace09ee5a8592" font="1|Segoe UI|9.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" archimateElement="id-0286ec88811f48fba9c921155f60fb42">
+        <bounds x="140" y="160" width="140" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-26ff6b19213347028f04b7f479cc31f5" font="1|Segoe UI|9|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" source="id-61e5aace28444778a9c6d12b20203e54" target="id-34fc723900b2412f9e9b24e29c260531" archimateRelationship="id-7a069d0bcb5e4673ab8c80c4428ca1b1">
+          <feature name="nameVisible" value="true"/>
+        </sourceConnection>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-ab7a41ead7104f219a82f6a606a0c6a8" targetConnections="id-6377e2dcf4fb4e81b25970ba7c2141d7 id-f6a3e62fd98749d1a07416bd426b5102" font="1|Segoe UI|9.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" archimateElement="id-aefaf8d0957b4e38989585321bfd6382">
+        <bounds x="560" y="160" width="140" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-34fc723900b2412f9e9b24e29c260531" targetConnections="id-26ff6b19213347028f04b7f479cc31f5 id-64fcf68abafc4c578975a74663c108ae" font="1|Segoe UI|9.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" archimateElement="id-023c1109d853411393758032d1434986">
+        <bounds x="140" y="300" width="180" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dace0a89160f4c198b37101a14fcb0b2" font="1|Segoe UI|9.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" archimateElement="id-92e549dbe73f4e66aa32bc703cf707e2">
+        <bounds x="460" y="300" width="200" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-64fcf68abafc4c578975a74663c108ae" font="1|Segoe UI|9|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" source="id-dace0a89160f4c198b37101a14fcb0b2" target="id-34fc723900b2412f9e9b24e29c260531" archimateRelationship="id-d6c2d3e7e52047ddb46fcff12f282016">
+          <feature name="nameVisible" value="true"/>
+        </sourceConnection>
+        <sourceConnection xsi:type="archimate:Connection" id="id-f6a3e62fd98749d1a07416bd426b5102" font="1|Segoe UI|9|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI" source="id-dace0a89160f4c198b37101a14fcb0b2" target="id-ab7a41ead7104f219a82f6a606a0c6a8" archimateRelationship="id-4e9a7692257440b5a6f0eff8aa81ae72">
+          <feature name="nameVisible" value="true"/>
+        </sourceConnection>
+      </child>
+      <documentation>Business actors, role and collaboration for the City Library domain.</documentation>
+    </element>
+  </folder>
+  <purpose>A simple ArchiMate business-layer model illustrating business actors, a business role, and a business collaboration for a public library domain.</purpose>
+</archimate:model>

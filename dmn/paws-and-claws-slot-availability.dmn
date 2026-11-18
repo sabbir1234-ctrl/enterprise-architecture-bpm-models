@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_PawsClaws" name="Slot Availability DRD" namespace="http://paws-and-claws.example/dmn" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <decision id="Decision_SlotAvailability" name="Slot Availability">
+    <variable id="Var_SlotAvailability" name="Slot Availability" typeRef="string" />
+    <informationRequirement id="IR_VE_Slot">
+      <requiredDecision href="#Decision_VetEligibility" />
+    </informationRequirement>
+    <informationRequirement id="IR_RA_Slot">
+      <requiredDecision href="#Decision_ResourceAvailability" />
+    </informationRequirement>
+    <informationRequirement id="IR_Req_Slot">
+      <requiredInput href="#Input_AppointmentRequest" />
+    </informationRequirement>
+    <authorityRequirement id="AR_Policy">
+      <requiredAuthority href="#KS_AppointmentPolicy" />
+    </authorityRequirement>
+    <decisionTable id="DT_Slot" hitPolicy="UNIQUE">
+      <input id="DT_in1" label="Vet Eligibility">
+        <inputExpression id="DT_ie1" typeRef="boolean">
+          <text>Vet Eligibility</text>
+        </inputExpression>
+      </input>
+      <input id="DT_in2" label="Resource Availability">
+        <inputExpression id="DT_ie2" typeRef="boolean">
+          <text>Resource Availability</text>
+        </inputExpression>
+      </input>
+      <input id="DT_in3" label="Visit Type">
+        <inputExpression id="DT_ie3" typeRef="string">
+          <text>Appointment Request.visitType</text>
+        </inputExpression>
+        <inputValues id="DT_iv3">
+          <text>"Routine","Emergency"</text>
+        </inputValues>
+      </input>
+      <output id="DT_out" label="Slot Availability" name="Slot Availability" typeRef="string" />
+      <rule id="DT_r1">
+        <description>Vet and resources available - book regardless of visit type</description>
+        <inputEntry id="DT_r1_1"><text>true</text></inputEntry>
+        <inputEntry id="DT_r1_2"><text>true</text></inputEntry>
+        <inputEntry id="DT_r1_3"><text>"Routine","Emergency"</text></inputEntry>
+        <outputEntry id="DT_r1_o"><text>"Slot available"</text></outputEntry>
+      </rule>
+      <rule id="DT_r2">
+        <description>Emergency override - reserved emergency room is used</description>
+        <inputEntry id="DT_r2_1"><text>true</text></inputEntry>
+        <inputEntry id="DT_r2_2"><text>false</text></inputEntry>
+        <inputEntry id="DT_r2_3"><text>"Emergency"</text></inputEntry>
+        <outputEntry id="DT_r2_o"><text>"Slot available"</text></outputEntry>
+      </rule>
+      <rule id="DT_r3">
+        <description>Routine visit without required resources</description>
+        <inputEntry id="DT_r3_1"><text>true</text></inputEntry>
+        <inputEntry id="DT_r3_2"><text>false</text></inputEntry>
+        <inputEntry id="DT_r3_3"><text>"Routine"</text></inputEntry>
+        <outputEntry id="DT_r3_o"><text>"No slot available"</text></outputEntry>
+      </rule>
+      <rule id="DT_r4">
+        <description>Vet not eligible, resources free</description>
+        <inputEntry id="DT_r4_1"><text>false</text></inputEntry>
+        <inputEntry id="DT_r4_2"><text>true</text></inputEntry>
+        <inputEntry id="DT_r4_3"><text>-</text></inputEntry>
+        <outputEntry id="DT_r4_o"><text>"No slot available"</text></outputEntry>
+      </rule>
+      <rule id="DT_r5">
+        <description>Neither vet nor resources available</description>
+        <inputEntry id="DT_r5_1"><text>false</text></inputEntry>
+        <inputEntry id="DT_r5_2"><text>false</text></inputEntry>
+        <inputEntry id="DT_r5_3"><text>-</text></inputEntry>
+        <outputEntry id="DT_r5_o"><text>"No slot available"</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_VetEligibility" name="Vet Eligibility">
+    <variable id="Var_VetEligibility" name="Vet Eligibility" typeRef="boolean" />
+    <informationRequirement id="IR_Sched_VE">
+      <requiredInput href="#Input_VetSchedule" />
+    </informationRequirement>
+    <informationRequirement id="IR_Qual_VE">
+      <requiredInput href="#Input_VetQualifications" />
+    </informationRequirement>
+    <informationRequirement id="IR_Req_VE">
+      <requiredInput href="#Input_AppointmentRequest" />
+    </informationRequirement>
+    <decisionTable id="DT_Vet" hitPolicy="UNIQUE">
+      <input id="DV_in1" label="Vet Qualified for Species">
+        <inputExpression id="DV_ie1" typeRef="boolean">
+          <text>list contains(Vet Qualifications.treatedSpecies, Appointment Request.species)</text>
+        </inputExpression>
+      </input>
+      <input id="DV_in2" label="Vet Free at Requested Time">
+        <inputExpression id="DV_ie2" typeRef="boolean">
+          <text>Vet Schedule.freeAtRequestedTime</text>
+        </inputExpression>
+      </input>
+      <output id="DV_out" label="Vet Eligibility" name="Vet Eligibility" typeRef="boolean" />
+      <rule id="DV_r1">
+        <inputEntry id="DV_r1_1"><text>true</text></inputEntry>
+        <inputEntry id="DV_r1_2"><text>true</text></inputEntry>
+        <outputEntry id="DV_r1_o"><text>true</text></outputEntry>
+      </rule>
+      <rule id="DV_r2">
+        <inputEntry id="DV_r2_1"><text>true</text></inputEntry>
+        <inputEntry id="DV_r2_2"><text>false</text></inputEntry>
+        <outputEntry id="DV_r2_o"><text>false</text></outputEntry>
+      </rule>
+      <rule id="DV_r3">
+        <inputEntry id="DV_r3_1"><text>false</text></inputEntry>
+        <inputEntry id="DV_r3_2"><text>-</text></inputEntry>
+        <outputEntry id="DV_r3_o"><text>false</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_ResourceAvailability" name="Resource Availability">
+    <variable id="Var_ResourceAvailability" name="Resource Availability" typeRef="boolean" />
+    <informationRequirement id="IR_Req_RA">
+      <requiredInput href="#Input_AppointmentRequest" />
+    </informationRequirement>
+    <informationRequirement id="IR_Res_RA">
+      <requiredInput href="#Input_ResourceSchedule" />
+    </informationRequirement>
+    <decisionTable id="DT_Res" hitPolicy="UNIQUE">
+      <input id="DR_in1" label="Room Free">
+        <inputExpression id="DR_ie1" typeRef="boolean">
+          <text>Room and Equipment Schedule.roomFree</text>
+        </inputExpression>
+      </input>
+      <input id="DR_in2" label="Equipment Required">
+        <inputExpression id="DR_ie2" typeRef="boolean">
+          <text>Appointment Request.equipmentRequired</text>
+        </inputExpression>
+      </input>
+      <input id="DR_in3" label="Equipment Free">
+        <inputExpression id="DR_ie3" typeRef="boolean">
+          <text>Room and Equipment Schedule.equipmentFree</text>
+        </inputExpression>
+      </input>
+      <output id="DR_out" label="Resource Availability" name="Resource Availability" typeRef="boolean" />
+      <rule id="DR_r1">
+        <inputEntry id="DR_r1_1"><text>true</text></inputEntry>
+        <inputEntry id="DR_r1_2"><text>false</text></inputEntry>
+        <inputEntry id="DR_r1_3"><text>-</text></inputEntry>
+        <outputEntry id="DR_r1_o"><text>true</text></outputEntry>
+      </rule>
+      <rule id="DR_r2">
+        <inputEntry id="DR_r2_1"><text>true</text></inputEntry>
+        <inputEntry id="DR_r2_2"><text>true</text></inputEntry>
+        <inputEntry id="DR_r2_3"><text>true</text></inputEntry>
+        <outputEntry id="DR_r2_o"><text>true</text></outputEntry>
+      </rule>
+      <rule id="DR_r3">
+        <inputEntry id="DR_r3_1"><text>true</text></inputEntry>
+        <inputEntry id="DR_r3_2"><text>true</text></inputEntry>
+        <inputEntry id="DR_r3_3"><text>false</text></inputEntry>
+        <outputEntry id="DR_r3_o"><text>false</text></outputEntry>
+      </rule>
+      <rule id="DR_r4">
+        <inputEntry id="DR_r4_1"><text>false</text></inputEntry>
+        <inputEntry id="DR_r4_2"><text>-</text></inputEntry>
+        <inputEntry id="DR_r4_3"><text>-</text></inputEntry>
+        <outputEntry id="DR_r4_o"><text>false</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="Input_AppointmentRequest" name="Appointment Request" />
+  <inputData id="Input_VetSchedule" name="Vet Schedule" />
+  <inputData id="Input_VetQualifications" name="Vet Qualifications" />
+  <inputData id="Input_ResourceSchedule" name="Room and Equipment Schedule" />
+  <knowledgeSource id="KS_AppointmentPolicy" name="Clinic Appointment Policy" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1">
+      <dmndi:DMNShape id="S_Decision_SlotAvailability" dmnElementRef="Decision_SlotAvailability"><dc:Bounds height="80" width="180" x="430" y="60" /></dmndi:DMNShape>
+      <dmndi:DMNShape id="S_Decision_VetEligibility" dmnElementRef="Decision_VetEligibility"><dc:Bounds height="80" width="180" x="200" y="260" /></dmndi:DMNShape>
+      <dmndi:DMNShape id="S_Decision_ResourceAvailability" dmnElementRef="Decision_ResourceAvailability"><dc:Bounds height="80" width="180" x="640" y="260" /></dmndi:DMNShape>
+      <dmndi:DMNShape id="S_KS_AppointmentPolicy" dmnElementRef="KS_AppointmentPolicy"><dc:Bounds height="63" width="120" x="190" y="68" /></dmndi:DMNShape>
+      <dmndi:DMNShape id="S_Input_VetSchedule" dmnElementRef="Input_VetSchedule"><dc:Bounds height="45" width="125" x="110" y="500" /></dmndi:DMNShape>
+      <dmndi:DMNShape id="S_Input_VetQualifications" dmnElementRef="Input_VetQualifications"><dc:Bounds height="45" width="125" x="260" y="500" /></dmndi:DMNShape>
+      <dmndi:DMNShape id="S_Input_AppointmentRequest" dmnElementRef="Input_AppointmentRequest"><dc:Bounds height="45" width="125" x="460" y="500" /></dmndi:DMNShape>
+      <dmndi:DMNShape id="S_Input_ResourceSchedule" dmnElementRef="Input_ResourceSchedule"><dc:Bounds height="45" width="125" x="700" y="500" /></dmndi:DMNShape>
+      <dmndi:DMNEdge id="E_IR_VE_Slot" dmnElementRef="IR_VE_Slot"><di:waypoint x="330" y="260" /><di:waypoint x="470" y="140" /></dmndi:DMNEdge>
+      <dmndi:DMNEdge id="E_IR_RA_Slot" dmnElementRef="IR_RA_Slot"><di:waypoint x="690" y="260" /><di:waypoint x="570" y="140" /></dmndi:DMNEdge>
+      <dmndi:DMNEdge id="E_IR_Req_Slot" dmnElementRef="IR_Req_Slot"><di:waypoint x="522" y="500" /><di:waypoint x="522" y="140" /></dmndi:DMNEdge>
+      <dmndi:DMNEdge id="E_AR_Policy" dmnElementRef="AR_Policy"><di:waypoint x="310" y="100" /><di:waypoint x="430" y="100" /></dmndi:DMNEdge>
+      <dmndi:DMNEdge id="E_IR_Sched_VE" dmnElementRef="IR_Sched_VE"><di:waypoint x="172" y="500" /><di:waypoint x="260" y="340" /></dmndi:DMNEdge>
+      <dmndi:DMNEdge id="E_IR_Qual_VE" dmnElementRef="IR_Qual_VE"><di:waypoint x="322" y="500" /><di:waypoint x="300" y="340" /></dmndi:DMNEdge>
+      <dmndi:DMNEdge id="E_IR_Req_VE" dmnElementRef="IR_Req_VE"><di:waypoint x="480" y="500" /><di:waypoint x="340" y="340" /></dmndi:DMNEdge>
+      <dmndi:DMNEdge id="E_IR_Req_RA" dmnElementRef="IR_Req_RA"><di:waypoint x="565" y="500" /><di:waypoint x="690" y="340" /></dmndi:DMNEdge>
+      <dmndi:DMNEdge id="E_IR_Res_RA" dmnElementRef="IR_Res_RA"><di:waypoint x="762" y="500" /><di:waypoint x="740" y="340" /></dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

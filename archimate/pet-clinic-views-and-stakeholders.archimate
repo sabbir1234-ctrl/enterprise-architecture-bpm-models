@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Pet Clinic - Enterprise Architecture (Assignment 5)" id="id-model-petclinic-a5" version="5.0.0">
+  <purpose>Integrated ArchiMate model of the Pet Clinic: business layer (Lab 1/2), application layer (Lab 3), technology layer (Lab 4/Assignment 4) and stakeholder views (Assignment 5). Group: MD Sifaur Rahman, Sabbir Hossain Akanda, Samiul Haque Mahin, Rakibul Hasan Rony.</purpose>
+  <folder name="Strategy" id="pc5-f-0140" type="strategy"/>
+  <folder name="Business" id="pc5-f-0141" type="business">
+    <element xsi:type="archimate:BusinessActor" name="Pet Owner" id="pc5-id-0001">
+      <documentation>Customer who brings a pet to the clinic.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessActor" name="Clinic Staff" id="pc5-id-0002">
+      <documentation>Employees of the Pet Clinic.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessRole" name="Front Desk Staff" id="pc5-id-0003">
+      <documentation>Handles bookings, check-in and payment.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessRole" name="Veterinarian" id="pc5-id-0004">
+      <documentation>Examines and treats animals.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessInterface" name="Clinic Web Interface" id="pc5-id-0005">
+      <documentation>Online channel used by pet owners.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessInterface" name="Phone" id="pc5-id-0006">
+      <documentation>Phone channel for bookings.</documentation>
+    </element>
+    <element xsi:type="archimate:BusinessEvent" name="Appointment Requested" id="pc5-id-0007"/>
+    <element xsi:type="archimate:BusinessProcess" name="Book Appointment" id="pc5-id-0008"/>
+    <element xsi:type="archimate:BusinessProcess" name="Conduct Examination" id="pc5-id-0009"/>
+    <element xsi:type="archimate:BusinessProcess" name="Update Medical Record" id="pc5-id-0010"/>
+    <element xsi:type="archimate:BusinessProcess" name="Issue Invoice" id="pc5-id-0011"/>
+    <element xsi:type="archimate:BusinessService" name="Appointment Service" id="pc5-id-0012"/>
+    <element xsi:type="archimate:BusinessService" name="Veterinary Care Service" id="pc5-id-0013"/>
+    <element xsi:type="archimate:BusinessObject" name="Appointment" id="pc5-id-0014"/>
+    <element xsi:type="archimate:BusinessObject" name="Medical Record" id="pc5-id-0015"/>
+    <element xsi:type="archimate:BusinessObject" name="Invoice" id="pc5-id-0016"/>
+  </folder>
+  <folder name="Application" id="pc5-f-0142" type="application">
+    <element xsi:type="archimate:ApplicationInterface" name="Web Portal UI" id="pc5-id-0017"/>
+    <element xsi:type="archimate:ApplicationInterface" name="Front Desk UI" id="pc5-id-0018"/>
+    <element xsi:type="archimate:ApplicationInterface" name="Vet Console UI" id="pc5-id-0019"/>
+    <element xsi:type="archimate:ApplicationService" name="Appointment Scheduling Service" id="pc5-id-0020"/>
+    <element xsi:type="archimate:ApplicationService" name="Appointment Notification Service" id="pc5-id-0021"/>
+    <element xsi:type="archimate:ApplicationService" name="Medical Record Service" id="pc5-id-0022"/>
+    <element xsi:type="archimate:ApplicationService" name="Billing Service" id="pc5-id-0023"/>
+    <element xsi:type="archimate:ApplicationProcess" name="Process Appointment Booking" id="pc5-id-0024"/>
+    <element xsi:type="archimate:ApplicationFunction" name="Manage Appointment Data" id="pc5-id-0025"/>
+    <element xsi:type="archimate:ApplicationComponent" name="Appointment Scheduling System" id="pc5-id-0026"/>
+    <element xsi:type="archimate:ApplicationComponent" name="Notification Gateway System" id="pc5-id-0027"/>
+    <element xsi:type="archimate:ApplicationComponent" name="Clinic EMR System" id="pc5-id-0028"/>
+    <element xsi:type="archimate:ApplicationComponent" name="Billing System" id="pc5-id-0029"/>
+    <element xsi:type="archimate:DataObject" name="Appointment Record" id="pc5-id-0030"/>
+    <element xsi:type="archimate:DataObject" name="Patient Medical History" id="pc5-id-0031"/>
+    <element xsi:type="archimate:DataObject" name="Invoice Record" id="pc5-id-0032"/>
+  </folder>
+  <folder name="Technology &amp; Physical" id="pc5-f-0143" type="technology">
+    <element xsi:type="archimate:Facility" name="Pet Clinic Facility" id="pc5-id-0033">
+      <documentation>Reception area and examination rooms.</documentation>
+    </element>
+    <element xsi:type="archimate:Equipment" name="Veterinary Medical Equipment" id="pc5-id-0034"/>
+    <element xsi:type="archimate:Device" name="Front Desk PC" id="pc5-id-0035"/>
+    <element xsi:type="archimate:Device" name="Veterinarian Tablet" id="pc5-id-0036"/>
+    <element xsi:type="archimate:CommunicationNetwork" name="Clinic LAN" id="pc5-id-0037"/>
+    <element xsi:type="archimate:CommunicationNetwork" name="Internet" id="pc5-id-0038"/>
+    <element xsi:type="archimate:Node" name="Cloud Application Server" id="pc5-id-0039"/>
+    <element xsi:type="archimate:SystemSoftware" name="Web Server" id="pc5-id-0040"/>
+    <element xsi:type="archimate:Node" name="Cloud Database Server" id="pc5-id-0041"/>
+    <element xsi:type="archimate:SystemSoftware" name="Database Management System (DBMS)" id="pc5-id-0042"/>
+    <element xsi:type="archimate:Node" name="External SMS/Email Provider (Cloud)" id="pc5-id-0043"/>
+    <element xsi:type="archimate:TechnologyService" name="Web Hosting Service" id="pc5-id-0044"/>
+    <element xsi:type="archimate:TechnologyService" name="Data Storage Service" id="pc5-id-0045"/>
+    <element xsi:type="archimate:TechnologyService" name="SMS/Email Messaging Service (API)" id="pc5-id-0046"/>
+    <element xsi:type="archimate:Artifact" name="scheduling-app.war" id="pc5-id-0047"/>
+    <element xsi:type="archimate:Artifact" name="emr-app.war" id="pc5-id-0048"/>
+    <element xsi:type="archimate:Artifact" name="billing-app.war" id="pc5-id-0049"/>
+    <element xsi:type="archimate:Artifact" name="notification-module.jar" id="pc5-id-0050"/>
+    <element xsi:type="archimate:Artifact" name="Clinic Database" id="pc5-id-0051"/>
+  </folder>
+  <folder name="Motivation" id="pc5-f-0144" type="motivation">
+    <element xsi:type="archimate:Stakeholder" name="Clinic Manager" id="pc5-id-0052"/>
+    <element xsi:type="archimate:Stakeholder" name="Lead Veterinarian" id="pc5-id-0053"/>
+    <element xsi:type="archimate:Stakeholder" name="IT Manager" id="pc5-id-0054"/>
+    <element xsi:type="archimate:Stakeholder" name="System Administrator" id="pc5-id-0055"/>
+  </folder>
+  <folder name="Implementation &amp; Migration" id="pc5-f-0145" type="implementation_migration"/>
+  <folder name="Other" id="pc5-f-0146" type="other"/>
+  <folder name="Relations" id="pc5-f-0147" type="relations">
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0056" source="pc5-id-0002" target="pc5-id-0003"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0057" source="pc5-id-0002" target="pc5-id-0004"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0058" source="pc5-id-0003" target="pc5-id-0008"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0059" source="pc5-id-0003" target="pc5-id-0011"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0060" source="pc5-id-0004" target="pc5-id-0009"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0061" source="pc5-id-0004" target="pc5-id-0010"/>
+    <element xsi:type="archimate:TriggeringRelationship" id="pc5-rel-0062" source="pc5-id-0007" target="pc5-id-0008"/>
+    <element xsi:type="archimate:TriggeringRelationship" id="pc5-rel-0063" source="pc5-id-0008" target="pc5-id-0009"/>
+    <element xsi:type="archimate:TriggeringRelationship" id="pc5-rel-0064" source="pc5-id-0009" target="pc5-id-0010"/>
+    <element xsi:type="archimate:TriggeringRelationship" id="pc5-rel-0065" source="pc5-id-0010" target="pc5-id-0011"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0066" source="pc5-id-0008" target="pc5-id-0012"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0067" source="pc5-id-0009" target="pc5-id-0013"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0068" source="pc5-id-0010" target="pc5-id-0013"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0069" source="pc5-id-0012" target="pc5-id-0001"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0070" source="pc5-id-0013" target="pc5-id-0001"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0071" source="pc5-id-0005" target="pc5-id-0012"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0072" source="pc5-id-0006" target="pc5-id-0012"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0073" source="pc5-id-0005" target="pc5-id-0001"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0074" source="pc5-id-0006" target="pc5-id-0001"/>
+    <element xsi:type="archimate:AccessRelationship" id="pc5-rel-0075" source="pc5-id-0008" target="pc5-id-0014" accessType="1"/>
+    <element xsi:type="archimate:AccessRelationship" id="pc5-rel-0076" source="pc5-id-0009" target="pc5-id-0015" accessType="0"/>
+    <element xsi:type="archimate:AccessRelationship" id="pc5-rel-0077" source="pc5-id-0010" target="pc5-id-0015" accessType="1"/>
+    <element xsi:type="archimate:AccessRelationship" id="pc5-rel-0078" source="pc5-id-0011" target="pc5-id-0016" accessType="1"/>
+    <element xsi:type="archimate:CompositionRelationship" id="pc5-rel-0079" source="pc5-id-0026" target="pc5-id-0017"/>
+    <element xsi:type="archimate:CompositionRelationship" id="pc5-rel-0080" source="pc5-id-0026" target="pc5-id-0018"/>
+    <element xsi:type="archimate:CompositionRelationship" id="pc5-rel-0081" source="pc5-id-0028" target="pc5-id-0019"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0082" source="pc5-id-0017" target="pc5-id-0020"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0083" source="pc5-id-0018" target="pc5-id-0020"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0084" source="pc5-id-0019" target="pc5-id-0022"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0085" source="pc5-id-0026" target="pc5-id-0020"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0086" source="pc5-id-0027" target="pc5-id-0021"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0087" source="pc5-id-0028" target="pc5-id-0022"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0088" source="pc5-id-0029" target="pc5-id-0023"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0089" source="pc5-id-0026" target="pc5-id-0024"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0090" source="pc5-id-0026" target="pc5-id-0025"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0091" source="pc5-id-0024" target="pc5-id-0020"/>
+    <element xsi:type="archimate:AccessRelationship" id="pc5-rel-0092" source="pc5-id-0025" target="pc5-id-0030" accessType="1"/>
+    <element xsi:type="archimate:AccessRelationship" id="pc5-rel-0093" source="pc5-id-0028" target="pc5-id-0031" accessType="3"/>
+    <element xsi:type="archimate:AccessRelationship" id="pc5-rel-0094" source="pc5-id-0029" target="pc5-id-0032" accessType="1"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0095" source="pc5-id-0027" target="pc5-id-0026"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0096" source="pc5-id-0028" target="pc5-id-0029"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0097" source="pc5-id-0020" target="pc5-id-0008"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0098" source="pc5-id-0021" target="pc5-id-0008"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0099" source="pc5-id-0022" target="pc5-id-0009"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0100" source="pc5-id-0022" target="pc5-id-0010"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0101" source="pc5-id-0023" target="pc5-id-0011"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0102" source="pc5-id-0017" target="pc5-id-0001"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0103" source="pc5-id-0018" target="pc5-id-0003"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0104" source="pc5-id-0019" target="pc5-id-0004"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0105" source="pc5-id-0030" target="pc5-id-0014"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0106" source="pc5-id-0031" target="pc5-id-0015"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0107" source="pc5-id-0032" target="pc5-id-0016"/>
+    <element xsi:type="archimate:CompositionRelationship" id="pc5-rel-0108" source="pc5-id-0033" target="pc5-id-0034"/>
+    <element xsi:type="archimate:CompositionRelationship" id="pc5-rel-0109" source="pc5-id-0033" target="pc5-id-0035"/>
+    <element xsi:type="archimate:CompositionRelationship" id="pc5-rel-0110" source="pc5-id-0033" target="pc5-id-0036"/>
+    <element xsi:type="archimate:AssociationRelationship" id="pc5-rel-0111" source="pc5-id-0033" target="pc5-id-0037"/>
+    <element xsi:type="archimate:CompositionRelationship" id="pc5-rel-0112" source="pc5-id-0039" target="pc5-id-0040"/>
+    <element xsi:type="archimate:CompositionRelationship" id="pc5-rel-0113" source="pc5-id-0041" target="pc5-id-0042"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0114" source="pc5-id-0040" target="pc5-id-0044"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0115" source="pc5-id-0042" target="pc5-id-0045"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0116" source="pc5-id-0043" target="pc5-id-0046"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0117" source="pc5-id-0039" target="pc5-id-0047"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0118" source="pc5-id-0039" target="pc5-id-0048"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0119" source="pc5-id-0039" target="pc5-id-0049"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0120" source="pc5-id-0039" target="pc5-id-0050"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="pc5-rel-0121" source="pc5-id-0041" target="pc5-id-0051"/>
+    <element xsi:type="archimate:AssociationRelationship" id="pc5-rel-0122" source="pc5-id-0035" target="pc5-id-0037"/>
+    <element xsi:type="archimate:AssociationRelationship" id="pc5-rel-0123" source="pc5-id-0036" target="pc5-id-0037"/>
+    <element xsi:type="archimate:AssociationRelationship" id="pc5-rel-0124" source="pc5-id-0037" target="pc5-id-0038"/>
+    <element xsi:type="archimate:AssociationRelationship" id="pc5-rel-0125" source="pc5-id-0039" target="pc5-id-0038"/>
+    <element xsi:type="archimate:AssociationRelationship" id="pc5-rel-0126" source="pc5-id-0041" target="pc5-id-0038"/>
+    <element xsi:type="archimate:AssociationRelationship" id="pc5-rel-0127" source="pc5-id-0043" target="pc5-id-0038"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0128" source="pc5-id-0045" target="pc5-id-0039"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0129" source="pc5-id-0047" target="pc5-id-0026"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0130" source="pc5-id-0048" target="pc5-id-0028"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0131" source="pc5-id-0049" target="pc5-id-0029"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0132" source="pc5-id-0050" target="pc5-id-0027"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0133" source="pc5-id-0051" target="pc5-id-0030"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0134" source="pc5-id-0051" target="pc5-id-0031"/>
+    <element xsi:type="archimate:RealizationRelationship" id="pc5-rel-0135" source="pc5-id-0051" target="pc5-id-0032"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0136" source="pc5-id-0044" target="pc5-id-0026"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0137" source="pc5-id-0044" target="pc5-id-0028"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0138" source="pc5-id-0044" target="pc5-id-0029"/>
+    <element xsi:type="archimate:ServingRelationship" id="pc5-rel-0139" source="pc5-id-0046" target="pc5-id-0027"/>
+  </folder>
+  <folder name="Views" id="pc5-f-0148" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="1. Business Layer View - Pet Visit Process" id="pc5-view-0149">
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0150" archimateElement="pc5-id-0005">
+        <bounds x="20" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0181" source="pc5-do-0150" target="pc5-do-0154" archimateRelationship="pc5-rel-0071"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0183" source="pc5-do-0150" target="pc5-do-0151" archimateRelationship="pc5-rel-0073"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0151" targetConnections="pc5-conn-0179 pc5-conn-0180 pc5-conn-0183 pc5-conn-0184" archimateElement="pc5-id-0001">
+        <bounds x="250" y="20" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0152" archimateElement="pc5-id-0006">
+        <bounds x="470" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0182" source="pc5-do-0152" target="pc5-do-0154" archimateRelationship="pc5-rel-0072"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0184" source="pc5-do-0152" target="pc5-do-0151" archimateRelationship="pc5-rel-0074"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0153" archimateElement="pc5-id-0002">
+        <bounds x="800" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0166" source="pc5-do-0153" target="pc5-do-0156" archimateRelationship="pc5-rel-0056"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0167" source="pc5-do-0153" target="pc5-do-0157" archimateRelationship="pc5-rel-0057"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0154" targetConnections="pc5-conn-0176 pc5-conn-0181 pc5-conn-0182" archimateElement="pc5-id-0012">
+        <bounds x="250" y="130" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0179" source="pc5-do-0154" target="pc5-do-0151" archimateRelationship="pc5-rel-0069"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0155" targetConnections="pc5-conn-0177 pc5-conn-0178" archimateElement="pc5-id-0013">
+        <bounds x="470" y="130" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0180" source="pc5-do-0155" target="pc5-do-0151" archimateRelationship="pc5-rel-0070"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0156" targetConnections="pc5-conn-0166" archimateElement="pc5-id-0003">
+        <bounds x="690" y="130" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0168" source="pc5-do-0156" target="pc5-do-0159" archimateRelationship="pc5-rel-0058"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0169" source="pc5-do-0156" target="pc5-do-0162" archimateRelationship="pc5-rel-0059"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0157" targetConnections="pc5-conn-0167" archimateElement="pc5-id-0004">
+        <bounds x="910" y="130" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0170" source="pc5-do-0157" target="pc5-do-0160" archimateRelationship="pc5-rel-0060"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0171" source="pc5-do-0157" target="pc5-do-0161" archimateRelationship="pc5-rel-0061"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0158" archimateElement="pc5-id-0007">
+        <bounds x="20" y="250" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0172" source="pc5-do-0158" target="pc5-do-0159" archimateRelationship="pc5-rel-0062"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0159" targetConnections="pc5-conn-0168 pc5-conn-0172" archimateElement="pc5-id-0008">
+        <bounds x="250" y="250" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0173" source="pc5-do-0159" target="pc5-do-0160" archimateRelationship="pc5-rel-0063"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0176" source="pc5-do-0159" target="pc5-do-0154" archimateRelationship="pc5-rel-0066"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0185" source="pc5-do-0159" target="pc5-do-0163" archimateRelationship="pc5-rel-0075"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0160" targetConnections="pc5-conn-0170 pc5-conn-0173" archimateElement="pc5-id-0009">
+        <bounds x="470" y="250" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0174" source="pc5-do-0160" target="pc5-do-0161" archimateRelationship="pc5-rel-0064"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0177" source="pc5-do-0160" target="pc5-do-0155" archimateRelationship="pc5-rel-0067"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0186" source="pc5-do-0160" target="pc5-do-0164" archimateRelationship="pc5-rel-0076"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0161" targetConnections="pc5-conn-0171 pc5-conn-0174" archimateElement="pc5-id-0010">
+        <bounds x="690" y="250" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0175" source="pc5-do-0161" target="pc5-do-0162" archimateRelationship="pc5-rel-0065"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0178" source="pc5-do-0161" target="pc5-do-0155" archimateRelationship="pc5-rel-0068"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0187" source="pc5-do-0161" target="pc5-do-0164" archimateRelationship="pc5-rel-0077"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0162" targetConnections="pc5-conn-0169 pc5-conn-0175" archimateElement="pc5-id-0011">
+        <bounds x="910" y="250" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0188" source="pc5-do-0162" target="pc5-do-0165" archimateRelationship="pc5-rel-0078"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0163" targetConnections="pc5-conn-0185" archimateElement="pc5-id-0014">
+        <bounds x="250" y="370" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0164" targetConnections="pc5-conn-0186 pc5-conn-0187" archimateElement="pc5-id-0015">
+        <bounds x="580" y="370" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0165" targetConnections="pc5-conn-0188" archimateElement="pc5-id-0016">
+        <bounds x="910" y="370" width="160" height="55"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="2. Application Layer View - Clinic Information Systems" id="pc5-view-0189">
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0190" targetConnections="pc5-conn-0209" archimateElement="pc5-id-0001">
+        <bounds x="20" y="20" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0191" targetConnections="pc5-conn-0210" archimateElement="pc5-id-0003">
+        <bounds x="220" y="20" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0192" targetConnections="pc5-conn-0211" archimateElement="pc5-id-0004">
+        <bounds x="820" y="20" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0193" targetConnections="pc5-conn-0212" archimateElement="pc5-id-0017">
+        <bounds x="20" y="130" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0209" source="pc5-do-0193" target="pc5-do-0190" archimateRelationship="pc5-rel-0102"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0215" source="pc5-do-0193" target="pc5-do-0196" archimateRelationship="pc5-rel-0082"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0194" targetConnections="pc5-conn-0213" archimateElement="pc5-id-0018">
+        <bounds x="220" y="130" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0210" source="pc5-do-0194" target="pc5-do-0191" archimateRelationship="pc5-rel-0103"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0216" source="pc5-do-0194" target="pc5-do-0196" archimateRelationship="pc5-rel-0083"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0195" targetConnections="pc5-conn-0214" archimateElement="pc5-id-0019">
+        <bounds x="820" y="130" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0211" source="pc5-do-0195" target="pc5-do-0192" archimateRelationship="pc5-rel-0104"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0217" source="pc5-do-0195" target="pc5-do-0198" archimateRelationship="pc5-rel-0084"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0196" targetConnections="pc5-conn-0215 pc5-conn-0216 pc5-conn-0218 pc5-conn-0224" archimateElement="pc5-id-0020">
+        <bounds x="420" y="250" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0197" targetConnections="pc5-conn-0219" archimateElement="pc5-id-0021">
+        <bounds x="620" y="250" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0198" targetConnections="pc5-conn-0217 pc5-conn-0220" archimateElement="pc5-id-0022">
+        <bounds x="1020" y="250" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0199" targetConnections="pc5-conn-0221" archimateElement="pc5-id-0023">
+        <bounds x="1220" y="250" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0200" targetConnections="pc5-conn-0228" archimateElement="pc5-id-0026">
+        <bounds x="120" y="370" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0212" source="pc5-do-0200" target="pc5-do-0193" archimateRelationship="pc5-rel-0079"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0213" source="pc5-do-0200" target="pc5-do-0194" archimateRelationship="pc5-rel-0080"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0218" source="pc5-do-0200" target="pc5-do-0196" archimateRelationship="pc5-rel-0085"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0222" source="pc5-do-0200" target="pc5-do-0205" archimateRelationship="pc5-rel-0089"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0223" source="pc5-do-0200" target="pc5-do-0204" archimateRelationship="pc5-rel-0090"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0201" archimateElement="pc5-id-0027">
+        <bounds x="620" y="370" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0219" source="pc5-do-0201" target="pc5-do-0197" archimateRelationship="pc5-rel-0086"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0228" source="pc5-do-0201" target="pc5-do-0200" archimateRelationship="pc5-rel-0095"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0202" archimateElement="pc5-id-0028">
+        <bounds x="820" y="370" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0214" source="pc5-do-0202" target="pc5-do-0195" archimateRelationship="pc5-rel-0081"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0220" source="pc5-do-0202" target="pc5-do-0198" archimateRelationship="pc5-rel-0087"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0226" source="pc5-do-0202" target="pc5-do-0206" archimateRelationship="pc5-rel-0093"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0229" source="pc5-do-0202" target="pc5-do-0203" archimateRelationship="pc5-rel-0096"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0203" targetConnections="pc5-conn-0229" archimateElement="pc5-id-0029">
+        <bounds x="1220" y="370" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0221" source="pc5-do-0203" target="pc5-do-0199" archimateRelationship="pc5-rel-0088"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0227" source="pc5-do-0203" target="pc5-do-0207" archimateRelationship="pc5-rel-0094"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0204" targetConnections="pc5-conn-0223" archimateElement="pc5-id-0025">
+        <bounds x="220" y="490" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0225" source="pc5-do-0204" target="pc5-do-0208" archimateRelationship="pc5-rel-0092"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0205" targetConnections="pc5-conn-0222" archimateElement="pc5-id-0024">
+        <bounds x="420" y="490" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0224" source="pc5-do-0205" target="pc5-do-0196" archimateRelationship="pc5-rel-0091"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0206" targetConnections="pc5-conn-0226" archimateElement="pc5-id-0031">
+        <bounds x="820" y="490" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0207" targetConnections="pc5-conn-0227" archimateElement="pc5-id-0032">
+        <bounds x="1220" y="490" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0208" targetConnections="pc5-conn-0225" archimateElement="pc5-id-0030">
+        <bounds x="220" y="610" width="160" height="55"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="3. Technology Layer View - Clinic Infrastructure" id="pc5-view-0230">
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0231" archimateElement="pc5-id-0033">
+        <bounds x="20" y="20" width="400" height="320"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0250" source="pc5-do-0231" target="pc5-do-0234" archimateRelationship="pc5-rel-0108"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0251" source="pc5-do-0231" target="pc5-do-0232" archimateRelationship="pc5-rel-0109"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0252" source="pc5-do-0231" target="pc5-do-0233" archimateRelationship="pc5-rel-0110"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0253" source="pc5-do-0231" target="pc5-do-0235" archimateRelationship="pc5-rel-0111"/>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0232" targetConnections="pc5-conn-0251" archimateElement="pc5-id-0035">
+          <bounds x="20" y="40" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0264" source="pc5-do-0232" target="pc5-do-0235" archimateRelationship="pc5-rel-0122"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0233" targetConnections="pc5-conn-0252" archimateElement="pc5-id-0036">
+          <bounds x="210" y="40" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0265" source="pc5-do-0233" target="pc5-do-0235" archimateRelationship="pc5-rel-0123"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0234" targetConnections="pc5-conn-0250" archimateElement="pc5-id-0034">
+          <bounds x="20" y="225" width="160" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0235" targetConnections="pc5-conn-0253 pc5-conn-0264 pc5-conn-0265" archimateElement="pc5-id-0037">
+          <bounds x="220" y="225" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0266" source="pc5-do-0235" target="pc5-do-0243" archimateRelationship="pc5-rel-0124"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0236" archimateElement="pc5-id-0039">
+        <bounds x="480" y="20" width="700" height="200"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0254" source="pc5-do-0236" target="pc5-do-0237" archimateRelationship="pc5-rel-0112"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0259" source="pc5-do-0236" target="pc5-do-0238" archimateRelationship="pc5-rel-0117"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0260" source="pc5-do-0236" target="pc5-do-0239" archimateRelationship="pc5-rel-0118"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0261" source="pc5-do-0236" target="pc5-do-0240" archimateRelationship="pc5-rel-0119"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0262" source="pc5-do-0236" target="pc5-do-0241" archimateRelationship="pc5-rel-0120"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0267" source="pc5-do-0236" target="pc5-do-0243" archimateRelationship="pc5-rel-0125"/>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0237" targetConnections="pc5-conn-0254" archimateElement="pc5-id-0040">
+          <bounds x="20" y="40" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0256" source="pc5-do-0237" target="pc5-do-0242" archimateRelationship="pc5-rel-0114"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0238" targetConnections="pc5-conn-0259" archimateElement="pc5-id-0047">
+          <bounds x="20" y="125" width="160" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0239" targetConnections="pc5-conn-0260" archimateElement="pc5-id-0048">
+          <bounds x="190" y="125" width="160" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0240" targetConnections="pc5-conn-0261" archimateElement="pc5-id-0049">
+          <bounds x="360" y="125" width="160" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0241" targetConnections="pc5-conn-0262" archimateElement="pc5-id-0050">
+          <bounds x="530" y="125" width="160" height="55"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0242" targetConnections="pc5-conn-0256" archimateElement="pc5-id-0044">
+        <bounds x="1240" y="60" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0243" targetConnections="pc5-conn-0266 pc5-conn-0267 pc5-conn-0268 pc5-conn-0269" archimateElement="pc5-id-0038">
+        <bounds x="920" y="300" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0244" archimateElement="pc5-id-0041">
+        <bounds x="480" y="340" width="380" height="130"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0255" source="pc5-do-0244" target="pc5-do-0245" archimateRelationship="pc5-rel-0113"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0263" source="pc5-do-0244" target="pc5-do-0246" archimateRelationship="pc5-rel-0121"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0268" source="pc5-do-0244" target="pc5-do-0243" archimateRelationship="pc5-rel-0126"/>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0245" targetConnections="pc5-conn-0255" archimateElement="pc5-id-0042">
+          <bounds x="20" y="50" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0257" source="pc5-do-0245" target="pc5-do-0248" archimateRelationship="pc5-rel-0115"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0246" targetConnections="pc5-conn-0263" archimateElement="pc5-id-0051">
+          <bounds x="200" y="50" width="160" height="55"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0247" archimateElement="pc5-id-0043">
+        <bounds x="920" y="430" width="220" height="110"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0258" source="pc5-do-0247" target="pc5-do-0249" archimateRelationship="pc5-rel-0116"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0269" source="pc5-do-0247" target="pc5-do-0243" archimateRelationship="pc5-rel-0127"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0248" targetConnections="pc5-conn-0257" archimateElement="pc5-id-0045">
+        <bounds x="580" y="530" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0249" targetConnections="pc5-conn-0258" archimateElement="pc5-id-0046">
+        <bounds x="1200" y="457" width="160" height="55"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="4. Stakeholder View 1 - Clinic Services Support (Business-Application)" id="pc5-view-0270">
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0271" archimateElement="pc5-id-0003">
+        <bounds x="250" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0287" source="pc5-do-0271" target="pc5-do-0273" archimateRelationship="pc5-rel-0058"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0288" source="pc5-do-0271" target="pc5-do-0276" archimateRelationship="pc5-rel-0059"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0272" archimateElement="pc5-id-0004">
+        <bounds x="690" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0289" source="pc5-do-0272" target="pc5-do-0274" archimateRelationship="pc5-rel-0060"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0290" source="pc5-do-0272" target="pc5-do-0275" archimateRelationship="pc5-rel-0061"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0273" targetConnections="pc5-conn-0287 pc5-conn-0294 pc5-conn-0295" archimateElement="pc5-id-0008">
+        <bounds x="130" y="150" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0291" source="pc5-do-0273" target="pc5-do-0274" archimateRelationship="pc5-rel-0063"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0274" targetConnections="pc5-conn-0289 pc5-conn-0291 pc5-conn-0296" archimateElement="pc5-id-0009">
+        <bounds x="470" y="150" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0292" source="pc5-do-0274" target="pc5-do-0275" archimateRelationship="pc5-rel-0064"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0275" targetConnections="pc5-conn-0290 pc5-conn-0292 pc5-conn-0297" archimateElement="pc5-id-0010">
+        <bounds x="690" y="150" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0293" source="pc5-do-0275" target="pc5-do-0276" archimateRelationship="pc5-rel-0065"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0276" targetConnections="pc5-conn-0288 pc5-conn-0293 pc5-conn-0298" archimateElement="pc5-id-0011">
+        <bounds x="910" y="150" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0277" targetConnections="pc5-conn-0300" archimateElement="pc5-id-0021">
+        <bounds x="20" y="290" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0295" source="pc5-do-0277" target="pc5-do-0273" archimateRelationship="pc5-rel-0098"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0278" targetConnections="pc5-conn-0299" archimateElement="pc5-id-0020">
+        <bounds x="240" y="290" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0294" source="pc5-do-0278" target="pc5-do-0273" archimateRelationship="pc5-rel-0097"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0279" targetConnections="pc5-conn-0301" archimateElement="pc5-id-0022">
+        <bounds x="580" y="290" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0296" source="pc5-do-0279" target="pc5-do-0274" archimateRelationship="pc5-rel-0099"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0297" source="pc5-do-0279" target="pc5-do-0275" archimateRelationship="pc5-rel-0100"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0280" targetConnections="pc5-conn-0302" archimateElement="pc5-id-0023">
+        <bounds x="910" y="290" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0298" source="pc5-do-0280" target="pc5-do-0276" archimateRelationship="pc5-rel-0101"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0281" archimateElement="pc5-id-0027">
+        <bounds x="20" y="410" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0300" source="pc5-do-0281" target="pc5-do-0277" archimateRelationship="pc5-rel-0086"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0303" source="pc5-do-0281" target="pc5-do-0282" archimateRelationship="pc5-rel-0095"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0282" targetConnections="pc5-conn-0303" archimateElement="pc5-id-0026">
+        <bounds x="240" y="410" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0299" source="pc5-do-0282" target="pc5-do-0278" archimateRelationship="pc5-rel-0085"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0283" archimateElement="pc5-id-0028">
+        <bounds x="580" y="410" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0301" source="pc5-do-0283" target="pc5-do-0279" archimateRelationship="pc5-rel-0087"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0304" source="pc5-do-0283" target="pc5-do-0284" archimateRelationship="pc5-rel-0096"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0284" targetConnections="pc5-conn-0304" archimateElement="pc5-id-0029">
+        <bounds x="910" y="410" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0302" source="pc5-do-0284" target="pc5-do-0280" archimateRelationship="pc5-rel-0088"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0285" archimateElement="pc5-id-0052">
+        <bounds x="1140" y="450" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0286" archimateElement="pc5-id-0053">
+        <bounds x="1320" y="450" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:Note" id="pc5-note-0305" textAlignment="1">
+        <bounds x="1140" y="20" width="340" height="410"/>
+        <content>View name: Clinic Services Support View
+
+Stakeholders: Clinic Manager, Lead Veterinarian
+
+Concerns: Which information systems support the main clinic processes? Which processes would be affected if the Clinic EMR System became unavailable?
+
+Purpose: Show how each step of a pet visit depends on application services and components.
+
+Explanation: Booking depends on the Appointment Scheduling and Notification Gateway systems; examination and record updates depend on the Clinic EMR System; invoicing depends on the Billing System. An EMR outage therefore stops examinations and record updates.</content>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="5. Stakeholder View 2 - Clinic Infrastructure (Application-Technology)" id="pc5-view-0306">
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0307" targetConnections="pc5-conn-0338" archimateElement="pc5-id-0044">
+        <bounds x="800" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0334" source="pc5-do-0307" target="pc5-do-0308" archimateRelationship="pc5-rel-0136"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0335" source="pc5-do-0307" target="pc5-do-0309" archimateRelationship="pc5-rel-0137"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0336" source="pc5-do-0307" target="pc5-do-0310" archimateRelationship="pc5-rel-0138"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0308" targetConnections="pc5-conn-0330 pc5-conn-0334" archimateElement="pc5-id-0026">
+        <bounds x="40" y="130" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0309" targetConnections="pc5-conn-0331 pc5-conn-0335" archimateElement="pc5-id-0028">
+        <bounds x="230" y="130" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0310" targetConnections="pc5-conn-0332 pc5-conn-0336" archimateElement="pc5-id-0029">
+        <bounds x="420" y="130" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0311" targetConnections="pc5-conn-0333 pc5-conn-0337" archimateElement="pc5-id-0027">
+        <bounds x="610" y="130" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0312" targetConnections="pc5-conn-0340" archimateElement="pc5-id-0046">
+        <bounds x="1000" y="130" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0337" source="pc5-do-0312" target="pc5-do-0311" archimateRelationship="pc5-rel-0139"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0313" targetConnections="pc5-conn-0341" archimateElement="pc5-id-0039">
+        <bounds x="20" y="260" width="960" height="200"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0343" source="pc5-do-0313" target="pc5-do-0320" archimateRelationship="pc5-rel-0125"/>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0314" archimateElement="pc5-id-0047">
+          <bounds x="20" y="45" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0330" source="pc5-do-0314" target="pc5-do-0308" archimateRelationship="pc5-rel-0129"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0315" archimateElement="pc5-id-0048">
+          <bounds x="210" y="45" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0331" source="pc5-do-0315" target="pc5-do-0309" archimateRelationship="pc5-rel-0130"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0316" archimateElement="pc5-id-0049">
+          <bounds x="400" y="45" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0332" source="pc5-do-0316" target="pc5-do-0310" archimateRelationship="pc5-rel-0131"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0317" archimateElement="pc5-id-0050">
+          <bounds x="590" y="45" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0333" source="pc5-do-0317" target="pc5-do-0311" archimateRelationship="pc5-rel-0132"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0318" archimateElement="pc5-id-0040">
+          <bounds x="780" y="45" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0338" source="pc5-do-0318" target="pc5-do-0307" archimateRelationship="pc5-rel-0114"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0319" archimateElement="pc5-id-0043">
+        <bounds x="1000" y="260" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0340" source="pc5-do-0319" target="pc5-do-0312" archimateRelationship="pc5-rel-0116"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0345" source="pc5-do-0319" target="pc5-do-0320" archimateRelationship="pc5-rel-0127"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0320" targetConnections="pc5-conn-0342 pc5-conn-0343 pc5-conn-0344 pc5-conn-0345" archimateElement="pc5-id-0038">
+        <bounds x="1000" y="420" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0321" archimateElement="pc5-id-0041">
+        <bounds x="20" y="540" width="380" height="130"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0344" source="pc5-do-0321" target="pc5-do-0320" archimateRelationship="pc5-rel-0126"/>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0322" archimateElement="pc5-id-0051">
+          <bounds x="20" y="50" width="160" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0323" archimateElement="pc5-id-0042">
+          <bounds x="200" y="50" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0339" source="pc5-do-0323" target="pc5-do-0324" archimateRelationship="pc5-rel-0115"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0324" targetConnections="pc5-conn-0339" archimateElement="pc5-id-0045">
+        <bounds x="460" y="600" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0341" source="pc5-do-0324" target="pc5-do-0313" archimateRelationship="pc5-rel-0128"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0325" targetConnections="pc5-conn-0346 pc5-conn-0347" archimateElement="pc5-id-0037">
+        <bounds x="1000" y="540" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0342" source="pc5-do-0325" target="pc5-do-0320" archimateRelationship="pc5-rel-0124"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0326" archimateElement="pc5-id-0035">
+        <bounds x="900" y="660" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0346" source="pc5-do-0326" target="pc5-do-0325" archimateRelationship="pc5-rel-0122"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0327" archimateElement="pc5-id-0036">
+        <bounds x="1100" y="660" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0347" source="pc5-do-0327" target="pc5-do-0325" archimateRelationship="pc5-rel-0123"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0328" archimateElement="pc5-id-0054">
+        <bounds x="1250" y="560" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0329" archimateElement="pc5-id-0055">
+        <bounds x="1430" y="560" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:Note" id="pc5-note-0348" textAlignment="1">
+        <bounds x="1250" y="20" width="340" height="500"/>
+        <content>View name: Clinic Infrastructure View
+
+Stakeholders: IT Manager, System Administrator
+
+Concerns: What technology infrastructure is required to run the clinic's applications? Which applications are affected if a server or the external SMS/Email service fails?
+
+Purpose: Show how each application component is deployed, which technology services it uses and how users connect.
+
+Explanation: All four applications are deployed as artifacts on the Cloud Application Server, served by its Web Hosting Service. The server depends on the Data Storage Service of the Cloud Database Server, which is a single point of failure. The Notification Gateway depends on an external SMS/Email provider outside the clinic's control.</content>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="6. Information Realization View (Business-Application-Technology)" id="pc5-view-0349">
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0350" archimateElement="pc5-id-0008">
+        <bounds x="20" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0361" source="pc5-do-0350" target="pc5-do-0353" archimateRelationship="pc5-rel-0075"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0351" archimateElement="pc5-id-0010">
+        <bounds x="260" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0362" source="pc5-do-0351" target="pc5-do-0354" archimateRelationship="pc5-rel-0077"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0352" archimateElement="pc5-id-0011">
+        <bounds x="500" y="20" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0363" source="pc5-do-0352" target="pc5-do-0355" archimateRelationship="pc5-rel-0078"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0353" targetConnections="pc5-conn-0361 pc5-conn-0364" archimateElement="pc5-id-0014">
+        <bounds x="20" y="140" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0354" targetConnections="pc5-conn-0362 pc5-conn-0365" archimateElement="pc5-id-0015">
+        <bounds x="260" y="140" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0355" targetConnections="pc5-conn-0363 pc5-conn-0366" archimateElement="pc5-id-0016">
+        <bounds x="500" y="140" width="160" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0356" targetConnections="pc5-conn-0367" archimateElement="pc5-id-0030">
+        <bounds x="20" y="270" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0364" source="pc5-do-0356" target="pc5-do-0353" archimateRelationship="pc5-rel-0105"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0357" targetConnections="pc5-conn-0368" archimateElement="pc5-id-0031">
+        <bounds x="260" y="270" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0365" source="pc5-do-0357" target="pc5-do-0354" archimateRelationship="pc5-rel-0106"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0358" targetConnections="pc5-conn-0369" archimateElement="pc5-id-0032">
+        <bounds x="500" y="270" width="160" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0366" source="pc5-do-0358" target="pc5-do-0355" archimateRelationship="pc5-rel-0107"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="pc5-do-0359" archimateElement="pc5-id-0041">
+        <bounds x="120" y="390" width="380" height="130"/>
+        <child xsi:type="archimate:DiagramObject" id="pc5-do-0360" archimateElement="pc5-id-0051">
+          <bounds x="110" y="50" width="160" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0367" source="pc5-do-0360" target="pc5-do-0356" archimateRelationship="pc5-rel-0133"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0368" source="pc5-do-0360" target="pc5-do-0357" archimateRelationship="pc5-rel-0134"/>
+          <sourceConnection xsi:type="archimate:Connection" id="pc5-conn-0369" source="pc5-do-0360" target="pc5-do-0358" archimateRelationship="pc5-rel-0135"/>
+        </child>
+      </child>
+    </element>
+  </folder>
+</archimate:model>

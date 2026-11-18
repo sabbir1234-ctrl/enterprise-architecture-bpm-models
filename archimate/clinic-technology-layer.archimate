@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Clinic Technology Layer" id="id-model" version="5.0.0">
+  <folder name="Technology &amp; Physical" id="id-f-tech" type="technology">
+    <element xsi:type="archimate:Facility" name="Server Room" id="id-el-room"/>
+    <element xsi:type="archimate:Node" name="Application Server" id="id-el-app"/>
+    <element xsi:type="archimate:Node" name="Database Server" id="id-el-db"/>
+    <element xsi:type="archimate:Equipment" name="UPS" id="id-el-ups"/>
+    <element xsi:type="archimate:SystemSoftware" name="Server Operating System" id="id-el-os"/>
+    <element xsi:type="archimate:SystemSoftware" name="Database Management System" id="id-el-dbms"/>
+    <element xsi:type="archimate:TechnologyInterface" name="LAN Interface" id="id-el-lan_if"/>
+    <element xsi:type="archimate:TechnologyService" name="Application Hosting Service" id="id-el-host"/>
+    <element xsi:type="archimate:TechnologyService" name="Data Storage Service" id="id-el-store"/>
+    <element xsi:type="archimate:Device" name="Front Desk Workstation" id="id-el-front"/>
+    <element xsi:type="archimate:Device" name="Vet Console Tablet" id="id-el-vet"/>
+    <element xsi:type="archimate:CommunicationNetwork" name="Clinic LAN" id="id-el-lan"/>
+    <element xsi:type="archimate:CommunicationNetwork" name="Internet Connection" id="id-el-net"/>
+  </folder>
+  <folder name="Relations" id="id-f-rel" type="relations">
+    <element xsi:type="archimate:AggregationRelationship" id="id-rel-0" source="id-el-room" target="id-el-app"/>
+    <element xsi:type="archimate:AggregationRelationship" id="id-rel-1" source="id-el-room" target="id-el-db"/>
+    <element xsi:type="archimate:AggregationRelationship" id="id-rel-2" source="id-el-room" target="id-el-ups"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="id-rel-3" source="id-el-app" target="id-el-os"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="id-rel-4" source="id-el-db" target="id-el-dbms"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-rel-5" source="id-el-app" target="id-el-host"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-rel-6" source="id-el-db" target="id-el-store"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-rel-7" source="id-el-store" target="id-el-host"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-rel-8" source="id-el-ups" target="id-el-app"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-rel-9" source="id-el-ups" target="id-el-db"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-rel-10" source="id-el-lan" target="id-el-lan_if"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-rel-11" source="id-el-net" target="id-el-lan"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-rel-12" source="id-el-lan_if" target="id-el-front"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-rel-13" source="id-el-lan_if" target="id-el-vet"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-rel-14" source="id-el-lan_if" target="id-el-app"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-rel-15" source="id-el-lan_if" target="id-el-db"/>
+  </folder>
+  <folder name="Views" id="id-f-views" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Clinic Technology View" id="id-view">
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-room" textAlignment="2" archimateElement="id-el-room" fillColor="#c9e7b7">
+        <bounds x="260" y="20" width="420" height="360"/>
+        <child xsi:type="archimate:DiagramObject" id="id-dobj-app" targetConnections="id-conn-8 id-conn-14" textAlignment="2" archimateElement="id-el-app" fillColor="#c9e7b7">
+          <bounds x="260" y="60" width="140" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="id-conn-3" source="id-dobj-app" target="id-dobj-os" archimateRelationship="id-rel-3"/>
+          <sourceConnection xsi:type="archimate:Connection" id="id-conn-5" source="id-dobj-app" target="id-dobj-host" archimateRelationship="id-rel-5"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="id-dobj-db" targetConnections="id-conn-9 id-conn-15" textAlignment="2" archimateElement="id-el-db" fillColor="#c9e7b7">
+          <bounds x="260" y="220" width="140" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="id-conn-4" source="id-dobj-db" target="id-dobj-dbms" archimateRelationship="id-rel-4"/>
+          <sourceConnection xsi:type="archimate:Connection" id="id-conn-6" source="id-dobj-db" target="id-dobj-store" archimateRelationship="id-rel-6"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="id-dobj-ups" textAlignment="2" archimateElement="id-el-ups" fillColor="#c9e7b7">
+          <bounds x="40" y="140" width="120" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="id-conn-8" source="id-dobj-ups" target="id-dobj-app" archimateRelationship="id-rel-8"/>
+          <sourceConnection xsi:type="archimate:Connection" id="id-conn-9" source="id-dobj-ups" target="id-dobj-db" archimateRelationship="id-rel-9"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-os" targetConnections="id-conn-3" textAlignment="2" archimateElement="id-el-os" fillColor="#c9e7b7">
+        <bounds x="20" y="40" width="140" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-host" targetConnections="id-conn-5 id-conn-7" textAlignment="2" archimateElement="id-el-host" fillColor="#c9e7b7">
+        <bounds x="20" y="130" width="140" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-store" targetConnections="id-conn-6" textAlignment="2" archimateElement="id-el-store" fillColor="#c9e7b7">
+        <bounds x="20" y="220" width="140" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-conn-7" source="id-dobj-store" target="id-dobj-host" archimateRelationship="id-rel-7"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-dbms" targetConnections="id-conn-4" textAlignment="2" archimateElement="id-el-dbms" fillColor="#c9e7b7">
+        <bounds x="20" y="310" width="140" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-lan_if" targetConnections="id-conn-10" textAlignment="2" archimateElement="id-el-lan_if" fillColor="#c9e7b7">
+        <bounds x="740" y="160" width="140" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-conn-12" source="id-dobj-lan_if" target="id-dobj-front" archimateRelationship="id-rel-12"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-conn-13" source="id-dobj-lan_if" target="id-dobj-vet" archimateRelationship="id-rel-13"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-conn-14" source="id-dobj-lan_if" target="id-dobj-app" archimateRelationship="id-rel-14"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-conn-15" source="id-dobj-lan_if" target="id-dobj-db" archimateRelationship="id-rel-15"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-lan" targetConnections="id-conn-11" textAlignment="2" archimateElement="id-el-lan" fillColor="#c9e7b7">
+        <bounds x="940" y="160" width="140" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-conn-10" source="id-dobj-lan" target="id-dobj-lan_if" archimateRelationship="id-rel-10"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-net" textAlignment="2" archimateElement="id-el-net" fillColor="#c9e7b7">
+        <bounds x="1140" y="160" width="140" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-conn-11" source="id-dobj-net" target="id-dobj-lan" archimateRelationship="id-rel-11"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-front" targetConnections="id-conn-12" textAlignment="2" archimateElement="id-el-front" fillColor="#c9e7b7">
+        <bounds x="740" y="40" width="140" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-dobj-vet" targetConnections="id-conn-13" textAlignment="2" archimateElement="id-el-vet" fillColor="#c9e7b7">
+        <bounds x="740" y="280" width="140" height="55"/>
+      </child>
+    </element>
+  </folder>
+</archimate:model>
